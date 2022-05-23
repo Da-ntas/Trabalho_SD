@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,10 +12,8 @@ import javax.persistence.Table;
 public class Consultas {
     @Id // indicação q o atributo a baixo é a chave primária no bd
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gerado pelo bd sequencialmente
-    private long code;
-
-    @ManyToOne
-    private User user;
+    @Column(name="codeConsultas")
+    private long codeConsultas;
 
     @Column(name = "dtAgendada", length = 11, nullable = false)
     private String dtaAgendada;
@@ -33,18 +30,20 @@ public class Consultas {
     @Column(name = "reembolsoConvenio", length = 150, nullable = false)
     private boolean reembolsoConvenio;
     
+    @Column(name="codeUserConsulta", length = 2, nullable = false)
+    private long codeUser;
 
-    public long getCode() {
-        return code;
+    public long getCodeConsultas() {
+        return codeConsultas;
     }
-    public void setCode(long code) {
-        this.code = code;
+    public void setCodeConsultas(long codeConsultas) {
+        this.codeConsultas = codeConsultas;
     }
-    public User getUser() {
-        return user;
+    public long getCodeUser() {
+        return codeUser;
     }
-    public void setUser(User user) {
-        this.user = user;
+    public void setCodeUser(long codeUser) {
+        this.codeUser = codeUser;
     }
     public String getDtaAgendada() {
         return dtaAgendada;

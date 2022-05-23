@@ -8,11 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity // classe será persistida no BD
-@Table(name = "tb_user") // nome da tabela, se não colocar vai ser o nome da classe
+@Table(name = "tb_users") // nome da tabela, se não colocar vai ser o nome da classe
 public class User {
     @Id // indicação q o atributo a baixo é a chave primária no bd
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gerado pelo bd sequencialmente
-    private long code;
+    @Column(name="codeUser")
+    private long codeUser;
 
     @Column(name = "nameUser", length = 150, nullable = false)
     private String nome;
@@ -32,8 +33,6 @@ public class User {
     private boolean convenio;
     @Column(name="nomConvenio", length = 100, nullable = true)
     private String nomConvenio;
-    @Column(name="codConvenio", length = 50, nullable = true)
-    private long codConvenio;
 
     public String getUf() {
         return uf;
@@ -48,10 +47,10 @@ public class User {
         this.cidade = cidade;
     }
     public long getCode() {
-        return code;
+        return codeUser;
     }
-    public void setCode(long code) {
-        this.code = code;
+    public void setCode(long codeUser) {
+        this.codeUser = codeUser;
     }
     public String getNome() {
         return nome;
@@ -94,12 +93,6 @@ public class User {
     }
     public void setNomConvenio(String nomConvenio) {
         this.nomConvenio = nomConvenio;
-    }
-    public long getCodConvenio() {
-        return codConvenio;
-    }
-    public void setCodConvenio(long codConvenio) {
-        this.codConvenio = codConvenio;
     }
     
 }

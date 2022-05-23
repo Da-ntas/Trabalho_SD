@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-// import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,42 +13,29 @@ public class Unidades {
     
     @Id // indicação q o atributo a baixo é a chave primária no bd
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gerado pelo bd sequencialmente
-    private long code;
+    @Column(name="codeUnidades")
+    private long codeUnidades;
 
     @Column(name="nomUnidade", length = 200, nullable = false)
     private String nomUnidade;
 
-    // @ManyToMany
-    // private TipoExame tipoExame;
-    // @ManyToMany
-    // private Cidades cidade;
-
-    // @ManyToMany
-    // private Medicos medicos;
-
-    // public Medicos getMedicos() {
-    //     return medicos;
-    // }
-
-    // public void setMedicos(Medicos medicos) {
-    //     this.medicos = medicos;
-    // }
-
-    // public TipoExame getTipoExame() {
-    //     return tipoExame;
-    // }
-
-    // public void setTipoExame(TipoExame tipoExame) {
-    //     this.tipoExame = tipoExame;
-    // }
-
-
-    public long getCode() {
-        return code;
+    @Column(name="codCidade", length = 2)
+    private long codCidade;
+    
+    public long getcodeUnidades() {
+        return codeUnidades;
     }
 
-    public void setCode(long code) {
-        this.code = code;
+    public void setCodeUnidades(long codeUnidades) {
+        this.codeUnidades = codeUnidades;
+    }
+
+    public long getCodCidade() {
+        return codCidade;
+    }
+
+    public void setCodCidade(long codCidade) {
+        this.codCidade = codCidade;
     }
 
     public String getNomUnidade() {
@@ -60,11 +46,4 @@ public class Unidades {
         this.nomUnidade = nomUnidade;
     }
 
-    // public Cidades getCidade() {
-    //     return cidade;
-    // }
-
-    // public void setCidade(Cidades cidade) {
-    //     this.cidade = cidade;
-    // }
 }
