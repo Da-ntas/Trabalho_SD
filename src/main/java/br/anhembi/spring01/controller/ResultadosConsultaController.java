@@ -34,7 +34,7 @@ public class ResultadosConsultaController {
         return ResponseEntity.ok(listResultadosConsulta);
     }
 
-    @GetMapping("/{codeConsulta}")
+    @GetMapping("/consulta/{codeConsulta}")
     public ResponseEntity<ResultadosConsulta> findResultadosConsultaByConsulta(@PathVariable long codeConsulta){
         List<ResultadosConsulta> listResultadoConsulta = (List<ResultadosConsulta>) repo.findAll();
         
@@ -61,10 +61,4 @@ public class ResultadosConsultaController {
         return ResponseEntity.notFound().build();
     }
     
-    @PostMapping
-    public ResponseEntity<ResultadosConsulta> insertResultadosConsultas(@RequestBody ResultadosConsulta resultadoconsulta){
-
-        ResultadosConsulta newresultadoconsulta = repo.save(resultadoconsulta);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newresultadoconsulta);
-    }
 }

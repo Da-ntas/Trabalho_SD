@@ -66,11 +66,5 @@ public class ConsultasController {
 
         return ResponseEntity.notFound().build();
     }
-    
-    @PostMapping
-    public ResponseEntity<Consultas> insertConsultas(@RequestBody Consultas consultas){
 
-        Consultas newconsulta = repo.save(consultas);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newconsulta);
-    }
 }

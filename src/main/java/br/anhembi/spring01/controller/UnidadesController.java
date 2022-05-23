@@ -35,7 +35,7 @@ public class UnidadesController {
         return ResponseEntity.ok(listuser);
     }
 
-    @GetMapping("/{codeCidades}")
+    @GetMapping("/cidades/{codeCidades}")
     public ResponseEntity <List<Unidades>> findUnidadesByCidades(@PathVariable long codeCidades){
         List<Unidades> listUnidades = (List<Unidades>)repo.findAll();
         

@@ -35,7 +35,7 @@ public class CidadesController {
         return ResponseEntity.ok(listcidades);
     }
 
-    @GetMapping("/{codeUF}")
+    @GetMapping("/cidadeporuf/{codeUF}")
     public ResponseEntity <List<Cidades>> findCidadeByUF(@PathVariable long codeUF){
         List<Cidades> listCidades = (List<Cidades>)repo.findAll();
         
