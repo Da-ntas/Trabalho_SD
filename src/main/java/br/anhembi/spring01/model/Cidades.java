@@ -14,17 +14,29 @@ public class Cidades {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long code;
+    @Column(name="codeCidades")
+    private long codeCidades;
 
     @Column(name="cidades", length = 150, nullable = false)
     private String nomCidades;
 
-    public long getCode() {
-        return code;
+    @Column(name="ufId", length= 2, nullable = true)
+    private long ufId;
+
+    public long getUfId() {
+        return ufId;
     }
 
-    public void setCode(long code) {
-        this.code = code;
+    public void setUfId(long ufId) {
+        this.ufId = ufId;
+    }
+
+    public long getCodeCidades() {
+        return codeCidades;
+    }
+
+    public void setCodeCidades(long codeCidades) {
+        this.codeCidades = codeCidades;
     }
 
     public String getNomCidades() {

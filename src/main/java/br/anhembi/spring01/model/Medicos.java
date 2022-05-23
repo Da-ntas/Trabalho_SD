@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,28 +12,29 @@ import javax.persistence.Table;
 public class Medicos {
     @Id // indicação q o atributo a baixo é a chave primária no bd
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gerado pelo bd sequencialmente
-    private long code;
+    @Column(name="codeMedicos")
+    private long codeMedicos;
 
     @Column(name="nomMedico", length=150, nullable=false)
     private String nomMedico;
 
-    @ManyToOne
-    private TipoExame tipoExame;
+    @Column(name="codTipoExame", length = 2)
+    private long codTipoExame;
 
-    public TipoExame getTipoExame() {
-        return tipoExame;
+    public long getCodeMedicos() {
+        return codeMedicos;
     }
 
-    public void setTipoExame(TipoExame tipoExame) {
-        this.tipoExame = tipoExame;
+    public void setCodeMedicos(long codeMedicos) {
+        this.codeMedicos = codeMedicos;
     }
 
-    public long getCode() {
-        return code;
+    public long getCodTipoExame() {
+        return codTipoExame;
     }
 
-    public void setCode(long code) {
-        this.code = code;
+    public void setCodTipoExame(long codTipoExame) {
+        this.codTipoExame = codTipoExame;
     }
 
     public String getNomMedico() {

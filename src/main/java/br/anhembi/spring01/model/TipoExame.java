@@ -12,26 +12,38 @@ import javax.persistence.Table;
 public class TipoExame {
     @Id // indicação q o atributo a baixo é a chave primária no bd
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gerado pelo bd sequencialmente
-    private long code;
+    @Column(name="codeExame")
+    private long codeExame;
 
     @Column(name="tipoExame", length=200, nullable = false)
     private String exameTipo;
 
-    public long getCode() {
-        return code;
+    @Column(name="codeCidade", length = 2)
+    private long codeCidade;
+    
+
+    public long getCodeExame() {
+        return codeExame;
     }
 
-    public void setCode(long code) {
-        this.code = code;
+    public void setCodeExame(long codeExame) {
+        this.codeExame = codeExame;
     }
 
-    public String getTipoExame() {
+    public String getExameTipo() {
         return exameTipo;
     }
 
-    public void setTipoExame(String exameTipo) {
+    public void setExameTipo(String exameTipo) {
         this.exameTipo = exameTipo;
     }
 
+    public long getCodeCidade() {
+        return codeCidade;
+    }
+
+    public void setCodeCidade(long codeCidade) {
+        this.codeCidade = codeCidade;
+    }
     
 }
