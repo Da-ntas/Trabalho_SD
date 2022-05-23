@@ -67,10 +67,4 @@ public class MedicosController {
         return ResponseEntity.notFound().build();
     }
     
-    @PostMapping
-    public ResponseEntity<Medicos> insertMedicos(@RequestBody Medicos medico){
-
-        Medicos newMedicos = repo.save(medico);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newMedicos);
-    }
 }

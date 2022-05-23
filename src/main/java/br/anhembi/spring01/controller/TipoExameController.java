@@ -34,7 +34,7 @@ public class TipoExameController {
         return ResponseEntity.ok(listTipoExame);
     }
 
-    @GetMapping("/{codeCidade}")
+    @GetMapping("/cidade/{codeCidade}")
     public ResponseEntity <List<TipoExame>> findTipoExamesByCidades(@PathVariable long codeCidade){
         List<TipoExame> listTipoExames = (List<TipoExame>) repo.findAll();
 
@@ -66,13 +66,6 @@ public class TipoExameController {
         }
 
         return ResponseEntity.notFound().build();
-    }
-
-    @PostMapping
-    public ResponseEntity<TipoExame> insertTiposExames(@RequestBody TipoExame tipoexame){
-
-        TipoExame newTipoExame = repo.save(tipoexame);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newTipoExame);
     }
 
 }

@@ -30,7 +30,7 @@ public class UfController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity <Uf> findUser(@PathVariable long id){
+    public ResponseEntity <Uf> findUF(@PathVariable long id){
         Uf uf = repo.findById(id).orElse(null);
         
         if(uf != null ){
