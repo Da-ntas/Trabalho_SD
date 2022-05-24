@@ -19,9 +19,20 @@ public class Unidades {
     @Column(name="nomUnidade", length = 200, nullable = false)
     private String nomUnidade;
 
+    
+    @Column(name="enderecoUnidade", length = 200, nullable = false)
+    private String enderecoUnidade;
+    
     @Column(name="codCidade", length = 2)
     private long codCidade;
     
+    public String getEnderecoUnidade() {
+        return enderecoUnidade;
+    }
+
+    public void setEnderecoUnidade(String enderecoUnidade) {
+        this.enderecoUnidade = enderecoUnidade;
+    }
     public long getcodeUnidades() {
         return codeUnidades;
     }
