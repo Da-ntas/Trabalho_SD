@@ -68,8 +68,6 @@ public class ConsultasController {
         return ResponseEntity.notFound().build();
     }
 
-<<<<<<< HEAD
-=======
     @PutMapping
     public ResponseEntity<Consultas> updateConsulta(@RequestBody Consultas consulta){
         Consultas consultafound = repo.findById(consulta.getCodeConsultas()).orElse(null);
@@ -81,5 +79,4 @@ public class ConsultasController {
         return ResponseEntity.notFound().build();
     }
 
->>>>>>> c22fdb8 (Correções)
 }
