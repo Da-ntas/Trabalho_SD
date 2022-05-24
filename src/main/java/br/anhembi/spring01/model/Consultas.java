@@ -29,10 +29,18 @@ public class Consultas {
     private String modoPagamento;
     @Column(name = "reembolsoConvenio", length = 150, nullable = false)
     private boolean reembolsoConvenio;
+    @Column(name="statusConsulta", length = 50, nullable = false)
+    private String statusConsulta;
     
     @Column(name="codeUserConsulta", length = 2, nullable = false)
     private long codeUser;
-
+    
+    public String getStatusConsulta() {
+        return statusConsulta;
+    }
+    public void setStatusConsulta(String statusConsulta) {
+        this.statusConsulta = statusConsulta;
+    }
     public long getCodeConsultas() {
         return codeConsultas;
     }

@@ -27,7 +27,7 @@ public class User {
     private long cpf;
     @Column(name="uf", length = 4, nullable = false)
     private String uf;
-    @Column(name="cidade", length = 100, nullable = false)
+    @Column(name="cidade", length = 100)
     private String cidade;
     @Column(name="convenio", length = 50, nullable = false)
     private boolean convenio;
