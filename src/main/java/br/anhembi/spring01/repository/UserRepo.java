@@ -6,5 +6,5 @@ import br.anhembi.spring01.model.User;
 
 //CRUD - create read update delete
 public interface UserRepo extends CrudRepository <User, Long>{
-    
+    User findByEmail(String email);
 }
