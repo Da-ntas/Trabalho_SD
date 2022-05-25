@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.anhembi.spring01.model.User;
 import br.anhembi.spring01.repository.UserRepo;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController //indica que esse é um controle rest
 @RequestMapping("/user") //indica o caminho da request para acessara esse controller
 public class UserController {
@@ -36,6 +39,16 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity <User> findUser(@PathVariable long id){
         User user = repo.findById(id).orElse(null);
+        
+        if(user != null ){
+            return ResponseEntity.ok(user);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity <User> findUserByEmail(@RequestParam String email){
+        User user = repo.findByEmail(email);
         
         if(user != null ){
             return ResponseEntity.ok(user);
