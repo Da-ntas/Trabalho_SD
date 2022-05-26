@@ -18,7 +18,6 @@ public class Unidades {
 
     @Column(name="nomUnidade", length = 200, nullable = false)
     private String nomUnidade;
-
     
     @Column(name="enderecoUnidade", length = 200, nullable = false)
     private String enderecoUnidade;

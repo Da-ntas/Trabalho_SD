@@ -25,25 +25,25 @@ public class User {
     private String dataNasc;
     @Column(name="cpf", length = 11, nullable = false, unique=true)
     private long cpf;
-    @Column(name="uf", length = 4, nullable = false)
-    private String uf;
-    @Column(name="cidade", length = 100)
-    private String cidade;
+    @Column(name="uf", length = 2, nullable = false)
+    private long uf;
+    @Column(name="cidade", length = 2)
+    private long cidade;
     @Column(name="convenio", length = 50, nullable = false)
     private boolean convenio;
     @Column(name="nomConvenio", length = 100, nullable = true)
     private String nomConvenio;
 
-    public String getUf() {
+    public long getUf() {
         return uf;
     }
-    public void setUf(String uf) {
+    public void setUf(long uf) {
         this.uf = uf;
     }
-    public String getCidade() {
+    public long getCidade() {
         return cidade;
     }
-    public void setCidade(String cidade) {
+    public void setCidade(long cidade) {
         this.cidade = cidade;
     }
     public long getCode() {
