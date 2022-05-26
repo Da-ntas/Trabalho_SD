@@ -19,10 +19,14 @@ public class Consultas {
     private String dtaAgendada;
     @Column(name = "horarioAgendado", length = 8, nullable = false)
     private String horarioAgendado;
-    @Column(name = "nomMedicoAgendado", length = 50, nullable = false)
+    @Column(name = "nomMedicoAgendado", length = 100, nullable = false)
     private String nomMedicoAgendado;
+    @Column(name= "idUnidadeAgendado", length = 2, nullable = false)
+    private long idUnidadeAgendado;
     @Column(name = "enderecoAgendado", length = 150, nullable = false)
     private String enderecoAgendado;
+    @Column(name= "idTipoExame", length = 2, nullable = false)
+    private long idTipoExame;
     @Column(name = "valorConsulta", length = 150, nullable = false)
     private double valorConsulta;
     @Column(name = "modoPagamento", length = 150, nullable = false)
@@ -35,6 +39,18 @@ public class Consultas {
     @Column(name="codeUserConsulta", length = 2, nullable = false)
     private long codeUser;
     
+    public long getIdTipoExame() {
+        return idTipoExame;
+    }
+    public void setIdTipoExame(long idTipoExame) {
+        this.idTipoExame = idTipoExame;
+    }
+    public long getIdUnidadeAgendado() {
+        return idUnidadeAgendado;
+    }
+    public void setIdUnidadeAgendado(long idUnidadeAgendado) {
+        this.idUnidadeAgendado = idUnidadeAgendado;
+    }
     public String getStatusConsulta() {
         return statusConsulta;
     }
