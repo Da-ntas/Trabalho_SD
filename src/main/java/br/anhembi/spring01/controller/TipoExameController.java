@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.anhembi.spring01.model.Cidades;
 import br.anhembi.spring01.model.TipoExame;
-import br.anhembi.spring01.repository.CidadesRepo;
+import br.anhembi.spring01.model.Unidades;
 import br.anhembi.spring01.repository.TipoExameRepo;
+import br.anhembi.spring01.repository.UnidadeRepo;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -27,7 +27,7 @@ public class TipoExameController {
     private TipoExameRepo repo; 
 
     @Autowired 
-    private CidadesRepo cidadeRepo;
+    private UnidadeRepo unidadeRepo;
 
     //get all
     @GetMapping
@@ -36,14 +36,14 @@ public class TipoExameController {
         return ResponseEntity.ok(listTipoExame);
     }
 
-    @GetMapping("/cidade/{codeCidade}")
-    public ResponseEntity <List<TipoExame>> findTipoExamesByCidades(@PathVariable long codeCidade){
+    @GetMapping("/unidade/{codeUnidade}")
+    public ResponseEntity <List<TipoExame>> findTipoExamesByCidades(@PathVariable long codeUnidade){
         List<TipoExame> listTipoExames = (List<TipoExame>) repo.findAll();
 
         List<TipoExame> tipoExamesFiltrados = new ArrayList<TipoExame>();
 
         for(TipoExame t : listTipoExames){
-            if(t.getCodeCidade() == codeCidade){
+            if(t.getCodeUnidade() == codeUnidade){
                 tipoExamesFiltrados.add(t);
             }
         }
@@ -55,13 +55,13 @@ public class TipoExameController {
         return ResponseEntity.notFound().build();
     }
     
-    @PostMapping("/{codeCidade}")
-    public ResponseEntity <TipoExame> insertTipoExameWithCidades(@PathVariable long codeCidade, @RequestBody TipoExame tipoExame){
-        Cidades cidade = cidadeRepo.findById(codeCidade).orElse(null);
+    @PostMapping("/{codeUnidade}")
+    public ResponseEntity <TipoExame> insertTipoExameWithCidades(@PathVariable long codeUnidade, @RequestBody TipoExame tipoExame){
+        Unidades unidade = unidadeRepo.findById(codeUnidade).orElse(null);
 
-        if(cidade != null){
+        if(unidade != null){
             TipoExame newtipoExame = repo.save(tipoExame);
-            newtipoExame.setCodeCidade(codeCidade);
+            newtipoExame.setCodeUnidade(codeUnidade);
             newtipoExame = repo.save(newtipoExame);
 
             return ResponseEntity.status(HttpStatus.CREATED).body(newtipoExame);

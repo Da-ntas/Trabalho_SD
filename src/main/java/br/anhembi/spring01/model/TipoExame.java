@@ -18,8 +18,8 @@ public class TipoExame {
     @Column(name="tipoExame", length=200, nullable = false)
     private String exameTipo;
 
-    @Column(name="codeCidade", length = 2)
-    private long codeCidade;
+    @Column(name="codeUnidade", length = 2, unique = true)
+    private long codeUnidade;
     
 
     public long getCodeExame() {
@@ -38,12 +38,12 @@ public class TipoExame {
         this.exameTipo = exameTipo;
     }
 
-    public long getCodeCidade() {
-        return codeCidade;
+    public long getCodeUnidade() {
+        return codeUnidade;
     }
 
-    public void setCodeCidade(long codeCidade) {
-        this.codeCidade = codeCidade;
+    public void setCodeUnidade(long codeUnidade) {
+        this.codeUnidade = codeUnidade;
     }
     
 }
