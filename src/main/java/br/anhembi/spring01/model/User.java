@@ -29,9 +29,17 @@ public class User {
     private long uf;
     @Column(name="cidade", length = 2)
     private long cidade;
+    @Column(name="codMed", length = 2, nullable = true)
+    private long codMedico;
     @Column(name="role", length = 6, nullable = false)
     private String role;
 
+    public long getCodMedico() {
+        return codMedico;
+    }
+    public void setCodMedico(long codMedico) {
+        this.codMedico = codMedico;
+    }
     public String getRole() {
         return role;
     }

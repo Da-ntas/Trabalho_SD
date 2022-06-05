@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.anhembi.spring01.model.Consultas;
@@ -38,7 +40,7 @@ public class ConsultasController {
     }
 
     @GetMapping("/userConsultas/{codUser}")
-    public ResponseEntity<List<Consultas>> findMedicosByTipoExame(@PathVariable long codUser){
+    public ResponseEntity<List<Consultas>> findConsultasByUser(@PathVariable long codUser){
         List<Consultas> listaConsultas = (List<Consultas>) repo.findAll();
         
         List<Consultas> consultasFiltradas = new ArrayList<Consultas>();
@@ -51,6 +53,46 @@ public class ConsultasController {
 
         if(!consultasFiltradas.isEmpty()){
             return ResponseEntity.ok(consultasFiltradas);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+    @GetMapping("/{codConsulta}")
+    public ResponseEntity<Consultas> findConsultaById(@PathVariable long codConsulta){
+        Consultas consulta = repo.findById(codConsulta).orElse(null);
+        
+        if(consulta != null){
+            return ResponseEntity.ok(consulta);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/status/{statusConsulta}/{codUser}")
+    public ResponseEntity<List<Consultas>> findConsultaByStatus(@PathVariable("statusConsulta") String statusConsulta, @PathVariable("codUser") long codUser){
+        List<Consultas> listaConsultas = (List<Consultas>)repo.findByStatusConsulta(statusConsulta);
+        
+        List<Consultas> consultasFiltradas = new ArrayList<Consultas>();
+
+        for(Consultas c : listaConsultas){
+            if(c.getCodeUser() == codUser){
+                consultasFiltradas.add(c);
+            }
+        }
+
+        if(!consultasFiltradas.isEmpty()){
+            return ResponseEntity.ok(consultasFiltradas);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/medico/{codMedico}")
+    public ResponseEntity<List<Consultas>> findConsultasByMedico(@PathVariable long codMedico){
+        List<Consultas> listaConsultas = (List<Consultas>) repo.findBycodMedicoAgendado(codMedico);
+                
+        if(!listaConsultas.isEmpty()){
+            return ResponseEntity.ok(listaConsultas);
         }
 
         return ResponseEntity.notFound().build();

@@ -74,6 +74,18 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/{codUser}")
+    public ResponseEntity<Void> updatePassword(@PathVariable long codUser, @RequestParam String newPass){
+        User userfound = repo.findById(codUser).orElse(null);
+
+        if(userfound != null){
+            userfound.setPassword(newPass);
+            repo.save(userfound);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable long id){
         User user = repo.findById(id).orElse(null);

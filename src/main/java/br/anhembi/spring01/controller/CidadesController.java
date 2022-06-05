@@ -55,6 +55,17 @@ public class CidadesController {
 
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/{codeCidade}")
+    public ResponseEntity <Cidades> findCidadeById(@PathVariable long codeCidade){
+        Cidades cidade = repo.findById(codeCidade).orElse(null);
+        
+        
+        if(cidade != null){
+            return ResponseEntity.ok(cidade);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 
     @PostMapping("/{codeUf}")
     public ResponseEntity<Cidades> insertCidadesWithUF(@PathVariable long codeUf, @RequestBody Cidades cidade){
