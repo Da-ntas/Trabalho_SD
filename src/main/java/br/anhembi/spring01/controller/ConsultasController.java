@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -123,4 +122,18 @@ public class ConsultasController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/{codConsulta}")
+    public ResponseEntity<Void> updateData(@PathVariable long codConsulta, @RequestParam String newData, @RequestParam String newHour, @RequestParam String newStatus){
+        Consultas consulta = repo.findById(codConsulta).orElse(null);
+
+        if(consulta != null){
+            consulta.setDtaAgendada(newData);
+            consulta.setHorarioAgendado(newHour);
+            consulta.setStatusConsulta(newStatus);
+            repo.save(consulta);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }
