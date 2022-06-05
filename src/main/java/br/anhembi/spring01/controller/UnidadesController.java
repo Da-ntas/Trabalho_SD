@@ -55,6 +55,16 @@ public class UnidadesController {
 
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/{codeUnidade}")
+    public ResponseEntity<Unidades> findUnidadesbyId(@PathVariable long codeUnidade){
+        Unidades unidade = repo.findById(codeUnidade).orElse(null);
+        
+        if(unidade != null){
+            return ResponseEntity.ok(unidade);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 
     @PostMapping("/{codeCidades}")
     public ResponseEntity<Unidades> insertUnidadesWithCidades(@PathVariable long codeCidades, @RequestBody Unidades unidade){

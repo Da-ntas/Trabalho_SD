@@ -19,20 +19,12 @@ public class Consultas {
     private String dtaAgendada;
     @Column(name = "horarioAgendado", length = 8, nullable = false)
     private String horarioAgendado;
-    @Column(name = "nomMedicoAgendado", length = 100, nullable = false)
-    private String nomMedicoAgendado;
+    @Column(name = "codMedicoAgendado", length = 2, nullable = false)
+    private long codMedicoAgendado;
     @Column(name= "idUnidadeAgendado", length = 2, nullable = false)
     private long idUnidadeAgendado;
-    @Column(name = "enderecoAgendado", length = 150, nullable = false)
-    private String enderecoAgendado;
     @Column(name= "idTipoExame", length = 2, nullable = false)
     private long idTipoExame;
-    @Column(name = "valorConsulta", length = 150, nullable = false)
-    private double valorConsulta;
-    @Column(name = "modoPagamento", length = 150, nullable = false)
-    private String modoPagamento;
-    @Column(name = "reembolsoConvenio", length = 150, nullable = false)
-    private boolean reembolsoConvenio;
     @Column(name="statusConsulta", length = 50, nullable = false)
     private String statusConsulta;
     
@@ -81,34 +73,10 @@ public class Consultas {
     public void setHorarioAgendado(String horarioAgendado) {
         this.horarioAgendado = horarioAgendado;
     }
-    public String getNomMedicoAgendado() {
-        return nomMedicoAgendado;
+    public long getCodMedicoAgendado() {
+        return codMedicoAgendado;
     }
-    public void setNomMedicoAgendado(String nomMedicoAgendado) {
-        this.nomMedicoAgendado = nomMedicoAgendado;
-    }
-    public String getEnderecoAgendado() {
-        return enderecoAgendado;
-    }
-    public void setEnderecoAgendado(String enderecoAgendado) {
-        this.enderecoAgendado = enderecoAgendado;
-    }
-    public double getValorConsulta() {
-        return valorConsulta;
-    }
-    public void setValorConsulta(double valorConsulta) {
-        this.valorConsulta = valorConsulta;
-    }
-    public String getModoPagamento() {
-        return modoPagamento;
-    }
-    public void setModoPagamento(String modoPagamento) {
-        this.modoPagamento = modoPagamento;
-    }
-    public boolean isReembolsoConvenio() {
-        return reembolsoConvenio;
-    }
-    public void setReembolsoConvenio(boolean reembolsoConvenio) {
-        this.reembolsoConvenio = reembolsoConvenio;
+    public void setCodMedicoAgendado(long codMedicoAgendado) {
+        this.codMedicoAgendado = codMedicoAgendado;
     }
 }

@@ -29,11 +29,15 @@ public class User {
     private long uf;
     @Column(name="cidade", length = 2)
     private long cidade;
-    @Column(name="convenio", length = 50, nullable = false)
-    private boolean convenio;
-    @Column(name="nomConvenio", length = 100, nullable = true)
-    private String nomConvenio;
+    @Column(name="role", length = 6, nullable = false)
+    private String role;
 
+    public String getRole() {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
+    }
     public long getUf() {
         return uf;
     }
@@ -81,18 +85,6 @@ public class User {
     }
     public void setCpf(long cpf) {
         this.cpf = cpf;
-    }
-    public boolean getConvenio() {
-        return convenio;
-    }
-    public void setConvenio(boolean convenio) {
-        this.convenio = convenio;
-    }
-    public String getNomConvenio() {
-        return nomConvenio;
-    }
-    public void setNomConvenio(String nomConvenio) {
-        this.nomConvenio = nomConvenio;
     }
     
 }

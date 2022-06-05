@@ -54,6 +54,16 @@ public class TipoExameController {
 
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/{codeTipoExame}")
+    public ResponseEntity <TipoExame> findTipoExameById(@PathVariable long codeTipoExame){
+        TipoExame tipoexame = repo.findById(codeTipoExame).orElse(null);
+
+        if(tipoexame != null){
+            return ResponseEntity.ok(tipoexame);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
     
     @PostMapping("/{codeUnidade}")
     public ResponseEntity <TipoExame> insertTipoExameWithCidades(@PathVariable long codeUnidade, @RequestBody TipoExame tipoExame){

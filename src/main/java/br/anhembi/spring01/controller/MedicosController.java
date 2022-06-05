@@ -54,6 +54,17 @@ public class MedicosController {
 
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/{codMedico}")
+    public ResponseEntity<Medicos> findMedicosById(@PathVariable long codMedico){
+        Medicos medico = repo.findById(codMedico).orElse(null);
+
+        if(medico != null){
+            return ResponseEntity.ok(medico);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
     
     @PostMapping("/{code}")
     public ResponseEntity<Medicos> insertResultadoConsultaWithConsulta(@PathVariable long code, @RequestBody Medicos medico){
