@@ -56,6 +56,25 @@ public class ConsultasController {
 
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/medConsultas/{codMed}")
+    public ResponseEntity<List<Consultas>> findConsultasByMed(@PathVariable long codMed){
+        List<Consultas> listaConsultas = (List<Consultas>) repo.findAll();
+        
+        List<Consultas> consultasFiltradas = new ArrayList<Consultas>();
+
+        for(Consultas c : listaConsultas){
+            if(c.getCodMedicoAgendado() == codMed){
+                consultasFiltradas.add(c);
+            }
+        }
+
+        if(!consultasFiltradas.isEmpty()){
+            return ResponseEntity.ok(consultasFiltradas);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
     @GetMapping("/{codConsulta}")
     public ResponseEntity<Consultas> findConsultaById(@PathVariable long codConsulta){
         Consultas consulta = repo.findById(codConsulta).orElse(null);

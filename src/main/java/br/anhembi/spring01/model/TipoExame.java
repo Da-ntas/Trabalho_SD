@@ -18,7 +18,7 @@ public class TipoExame {
     @Column(name="tipoExame", length=200, nullable = false)
     private String exameTipo;
 
-    @Column(name="codeUnidade", length = 2, unique = true)
+    @Column(name="codeUnidade", length = 2, unique = false)
     private long codeUnidade;
     
 

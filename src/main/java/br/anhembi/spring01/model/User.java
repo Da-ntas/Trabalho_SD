@@ -24,7 +24,7 @@ public class User {
     @Column(name="dataNasc", length = 10, nullable = false)
     private String dataNasc;
     @Column(name="cpf", length = 11, nullable = false, unique=true)
-    private long cpf;
+    private String cpf;
     @Column(name="uf", length = 2, nullable = false)
     private long uf;
     @Column(name="cidade", length = 2)
@@ -88,10 +88,10 @@ public class User {
     public void setDataNasc(String dataNasc) {
         this.dataNasc = dataNasc;
     }
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
     
