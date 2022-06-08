@@ -141,13 +141,26 @@ public class ConsultasController {
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/{codConsulta}")
+    @PutMapping("/remarcar/{codConsulta}")
     public ResponseEntity<Void> updateData(@PathVariable long codConsulta, @RequestParam String newData, @RequestParam String newHour, @RequestParam String newStatus){
         Consultas consulta = repo.findById(codConsulta).orElse(null);
 
         if(consulta != null){
             consulta.setDtaAgendada(newData);
             consulta.setHorarioAgendado(newHour);
+            consulta.setStatusConsulta(newStatus);
+            repo.save(consulta);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/status/{codConsulta}")
+    public ResponseEntity<Void> updateStatus(@PathVariable long codConsulta, @RequestParam String newStatus){
+        Consultas consulta = repo.findById(codConsulta).orElse(null);
+
+        if(consulta != null){
             consulta.setStatusConsulta(newStatus);
             repo.save(consulta);
             return ResponseEntity.status(HttpStatus.OK).build();

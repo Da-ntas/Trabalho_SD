@@ -16,11 +16,11 @@ public class ResultadosConsulta {
     @Column(name="codeResultadoConsulta")
     private long codeResultadoConsulta;
 
-    @Column(name="descricao", length = 500, nullable = false)
+    @Column(name="descricao", length = 50, nullable = false)
     private String descricao;
-    @Column(name="solicitacoes", length = 500, nullable = false)
+    @Column(name="solicitacoes", length = 50, nullable = false)
     private String solicitacoes;
-    @Column(name="codeConsultas", length = 2)
+    @Column(name="codeConsultas", length = 2, unique = true)
     private long codeConsultas;
 
     public long getCodeResultadoConsulta() {
